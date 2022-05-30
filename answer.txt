@@ -1,0 +1,9 @@
+SELECT a.* FROM users a WHERE a.email IN (SELECT b.email FROM users b GROUP BY b.email HAVING COUNT(*) > 1)
+
+
+SELECT DISTINCT login FROM users WHERE NOT EXISTS ( SELECT users.id FROM orders WHERE users.id = orders.user_id)
+
+
+SELECT DISTINCT login FROM users JOIN orders ON users.id = orders.user_id GROUP BY login having count(login) > 2 
+
+
